@@ -16,6 +16,7 @@ public class ScoreServlet extends HttpServlet{
         //如果用户单击的是取消，则不做任何操作直接回到用户主界面。
         if(req.getParameter("can")!=null){
             req.getRequestDispatcher("/true.jsp").forward(req,resp);
+            return;
         }
         try {
             QuestionHandler.getquestions();

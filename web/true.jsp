@@ -13,8 +13,17 @@
 <body>
 <form action="userServlet" name="from" method="post">
     <input type="submit" name="a" value="a">
+    <%
+        if(request.getAttribute("answered")!=null){
+    %>
     <input type="submit" name="b" value="b">
+    <input type="submit" name="x" value="x">
+    <%
+        }
+    %>
     <input type="submit" name="c" value="c">
+    <input type="submit" name="d" value="d">
+    <input type="submit" name="e" value="e">
 </form>
 </body>
 </html>

@@ -28,6 +28,17 @@ public class UserServlet extends HttpServlet{
             req.setAttribute("qs",questions);
             req.getRequestDispatcher("/questions.jsp").forward(req,resp);
         }
+        if(req.getParameter("x")!=null){
+            try {
+                QuestionHandler.getquestions();
+                req.setAttribute("questions",QuestionHandler.questions);
+                req.getRequestDispatcher("/rightanswer.jsp").forward(req,resp);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
         if(req.getParameter("b")!=null){
             String name= (String) req.getSession().getAttribute("id");
             try {
@@ -41,7 +52,14 @@ public class UserServlet extends HttpServlet{
             }
         }
         if(req.getParameter("c")!=null){
-            System.out.println("c");
+            req.getRequestDispatcher("/changeuser.jsp").forward(req,resp);
+        }
+        if(req.getParameter("d")!=null){
+            req.getRequestDispatcher("/changepassword.jsp").forward(req,resp);
+        }
+        if(req.getParameter("e")!=null){
+            req.getSession().invalidate();
+            req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }
 }

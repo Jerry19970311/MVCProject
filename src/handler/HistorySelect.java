@@ -1,5 +1,6 @@
 package handler;
 
+import DAO.HistoryCount;
 import DAO.HistoryData;
 import DAO.HistoryManage;
 import DAO.SQLBuilder;
@@ -31,5 +32,14 @@ public class HistorySelect {
             histories.add(new QuestionHistory(resultSet.getString(1),resultSet.getInt(2),resultSet.getString(4),resultSet.getString(5)));
         }
         return histories;
+    }
+    public static boolean isAnswered(String user) throws SQLException, ClassNotFoundException {
+        SQLBuilder sqlBuilder=new SQLBuilder();
+        HistoryCount historyCount=new HistoryCount(sqlBuilder.getConnection(),user);
+        if(historyCount.getCount()<=0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

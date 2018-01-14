@@ -1,6 +1,7 @@
 package servlet;
 
 import DAO.IllegalInputExpection;
+import handler.HistorySelect;
 import handler.LoginErrorExpection;
 import handler.LoginHandler;
 import bean.Person;
@@ -30,6 +31,9 @@ public class LoginServlet extends HttpServlet{
         }
         try {
             Person person= LoginHandler.getPerson(id,password);
+            if(HistorySelect.isAnswered(id)){
+                req.setAttribute("answered",true);
+            }
             req.getSession().setAttribute("id",person.getId());
             req.getSession().setAttribute("name",person.getName());
             int power=person.getPower();
@@ -37,10 +41,10 @@ public class LoginServlet extends HttpServlet{
                 req.getSession().setAttribute("power","普通用户");
                 req.getRequestDispatcher("/true.jsp").forward(req,resp);
             }else if(power==1){
-                req.getSession().setAttribute("name","普通管理员");
+                req.getSession().setAttribute("power","普通管理员");
                 req.getRequestDispatcher("/true.jsp").forward(req,resp);
             }else if(power==2){
-                req.getSession().setAttribute("name","超级管理员");
+                req.getSession().setAttribute("power","超级管理员");
                 req.getRequestDispatcher("/true.jsp").forward(req,resp);
             }else{
                 req.getRequestDispatcher("/error.jsp").forward(req,resp);

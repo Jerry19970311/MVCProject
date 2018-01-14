@@ -31,8 +31,26 @@
             ID
         </td>
     </tr>
-    <%for(int i=0;i<count;)%>
-    <%}%>
+    <%
+        for(int i=0;i<count;i++){
+    %>
+    <tr>
+        <td>
+            <%=qh.get(i).getId()%>
+        </td>
+        <td>
+            <%=qh.get(i).getGrade()%>
+        </td>
+        <td>
+            <%=qh.get(i).getTime()%>
+        </td>
+        <td>
+            <%=qh.get(i).getUser()%>
+        </td>
+    </tr>
+    <%
+        }
+    %>
 </table>
 </body>
 </html>

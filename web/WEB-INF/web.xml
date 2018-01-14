@@ -25,6 +25,14 @@
         <servlet-name>scoreServlet</servlet-name>
         <servlet-class>servlet.ScoreServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>userUpdateServlet</servlet-name>
+        <servlet-class>servlet.UserUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>passwordChangeServlet</servlet-name>
+        <servlet-class>servlet.PasswordChangeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WSServlet</servlet-name>
         <url-pattern>/services/*</url-pattern>
@@ -40,5 +48,13 @@
     <servlet-mapping>
         <servlet-name>scoreServlet</servlet-name>
         <url-pattern>/scoreServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userUpdateServlet</servlet-name>
+        <url-pattern>/userUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>passwordChangeServlet</servlet-name>
+        <url-pattern>/passwordChangeServlet</url-pattern>
     </servlet-mapping>
 </web-app>

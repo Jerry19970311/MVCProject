@@ -1,5 +1,6 @@
 package handler;
 
+import DAO.HistoryCount;
 import DAO.HistoryInput;
 import DAO.QuestionData;
 import DAO.SQLBuilder;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 //处理答题
-public class QuestionHandler {
+public class QuestionHandler{
     public static List<Question> questions;
     public static Hashtable<Integer,String> singleAnswer=new Hashtable<Integer, String>();
     public static Hashtable<Integer,String[]> complexAnswer=new Hashtable<Integer, String[]>();
@@ -55,7 +56,7 @@ public class QuestionHandler {
         SQLBuilder sqlBuilder=new SQLBuilder();
         HistoryInput historyInput=new HistoryInput(sqlBuilder.getConnection());
         int count=historyInput.getCount(user_id);
-        historyInput.summit(String.valueOf(count+1),grade,new Date().toString(),user_id);
+        historyInput.summit(user_id+"_"+String.valueOf(count+1),grade,new Date().toString(),user_id);
         sqlBuilder.close();
     }
 }
